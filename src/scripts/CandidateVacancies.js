@@ -16,6 +16,10 @@ class CandidateVacancies {
     _buildCandidatesToVacanciesMap () {
         
     }
+
+    _getVacancies () {
+        
+    }
 }
 
 module.exports = CandidateVacancies;

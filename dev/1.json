@@ -1,0 +1,39 @@
+{
+    "meta": {
+        "limit": 20,
+        "next": null,
+        "offset": 0,
+        "previous": null,
+        "total_count": 1
+    },
+    "objects": [
+        {
+            "created_at": "2018-07-27T10:40:57.787557",
+            "deleted_at": null,
+            "deleted_stamp": 0,
+            "documents": [],
+            "eid": "JYQCVPJJL72S2AGFABQN",
+            "email": null,
+            "field_branch_id": null,
+            "field_branch_name": null,
+            "field_cost_centre": null,
+            "field_creation_date": "2018-07-27T10:40:57.787557",
+            "field_description": null,
+            "field_job_title": null,
+            "field_name": "Vacancy1",
+            "field_pcj_test_api": null,
+            "field_vacancy_category": null,
+            "field_vacancy_id": null,
+            "field_vacancy_type": null,
+            "id": 4,
+            "is_deleted": false,
+            "is_new": true,
+            "modified_at": "2018-07-27T10:41:12.652710",
+            "notes": null,
+            "patron": 3,
+            "repr_value": "Vacancy1",
+            "resource_uri": "/api/v1/targets/4/",
+            "type": 1
+        }
+    ]
+}

@@ -7,7 +7,41 @@
 </head>
 
 <body>
-    <h1>Hello World!</h1>
+    <div id="header">
+    </div>
+    <div id="page">
+        <div class="w-75 mx-auto">
+            <div id="pageheader" class="p-3">
+                <h2 class="text-white font-weight-bold">Welcome <%= payload.candidate.firstName %> <%= payload.candidate.lastName %>!</h2>
+            </div>
+            <div id="pagecontent">
+                <div class="jumbotron">
+                    <p class="lead">Below is a list of vacancies you have applied for. The status will show your progress.</p>
+                    <p class="lead">Please contact us on 0800 123 4567 if you need further information.</p>
+                </div>
+                <table class="table table-striped w-75 mx-auto">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Job Title</th>
+                            <th scope="col">Branch Name</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% payload.applications.forEach((_row, _index) => { %>
+                            <tr>
+                                <th scope="row"><%= _index + 1 %></th>
+                                <td><%= _row[1] %></td>
+                                <td><%= _row[2] %></td>
+                                <td><%= _row[3] %></td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

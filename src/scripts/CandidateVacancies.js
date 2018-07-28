@@ -22,9 +22,7 @@ class CandidateVacancies {
     getVacancies (_candidateId) {
         const _response = {
             candidate: {},
-            applications: [
-                ['id', 'Job Title', 'Branch', 'Status']
-            ]
+            applications: []
         };
 
         const _candidateToVacanciesMap = {};

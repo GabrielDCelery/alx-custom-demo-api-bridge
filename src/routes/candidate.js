@@ -8,7 +8,19 @@ const CandidateVacancies = require('../scripts/CandidateVacancies');
 const cv = new CandidateVacancies();
 
 router.get('/:candidateId', function (_req, _res) {
-    cv.getVacancies(parseInt(_req.params.candidateId))
+    //cv.getVacancies(parseInt(_req.params.candidateId))
+    const _response = { 
+        candidate: { 
+            firstName: 'Derek', 
+            lastName: 'Danquah' 
+        },
+        applications: [
+            [ '5', 'Developer', 'IBM', 'Applied' ],
+            [ '3', 'Cleaner', 'Autologyx', 'Rejected' ] 
+        ] 
+    };
+  
+    return Promise.resolve(_response)
         .then(_results => {
             return _res.render('candidateVacancies', {
                 success: true,

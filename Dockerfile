@@ -15,8 +15,11 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-# Create static bundle
+# Create deployable build
 RUN npm run build
+
+# Remove redundant modules
+RUN npm prune --production
 
 EXPOSE 8080
 CMD [ "npm", "start" ]

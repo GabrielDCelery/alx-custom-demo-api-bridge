@@ -1,0 +1,17 @@
+#header {
+    height: 190px;
+    border-bottom: 9px solid #D3D3D3;
+}
+
+#page {
+    background-color: #001A71;
+    padding-top: 30px;
+}
+
+#pageheader {
+    background-color: #333;
+}
+
+#pagecontent {
+    background-color: #fff;
+}

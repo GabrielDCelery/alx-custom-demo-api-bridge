@@ -1,0 +1,9 @@
+{
+    // Format a file on save. A formatter must be available, the file must not be auto-saved, and editor must not be shutting down.
+    //"editor.formatOnSave": true,
+    // Always show the ESlint status bar item.
+    "eslint.alwaysShowStatus": true,
+    // Turns auto fix on save on or off.
+    "eslint.autoFixOnSave": true,
+    "git.ignoreLimitWarning": true,
+}

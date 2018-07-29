@@ -1,14 +1,17 @@
 {
-  "name": "candidate_vacancies_proof_of_concept",
+  "name": "alx-api-demo-pertemps",
   "version": "1.0.0",
-  "description": "",
+  "description": "Autologyx API Demo for Pertemps",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.js",
     "start": "node ./src/app.js"
   },
-  "author": "",
+  "author": {
+    "name": "Gabriel D. Celery",
+    "email": "gabriel.celery@autologyx.com"
+  },
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.54",

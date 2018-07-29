@@ -1,6 +1,6 @@
 # Autologyx API Demo for Pertemps
 
-### Running from Docker
+### Running from Docker (example)
 
 ```
 docker build -t alx/api-demo-pertemps .

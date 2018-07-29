@@ -6,7 +6,7 @@ const TargetApi = require('./api/TargetApi');
 const TargetsApi = require('./api/TargetsApi');
 const Promise = require('bluebird');
 
-const NUM_OF_TARGETS_TO_FETCH = 1000;
+const NUM_OF_TARGETS_TO_FETCH = 100;
 
 class CandidateVacancies {
     constructor() {
@@ -29,8 +29,10 @@ class CandidateVacancies {
 
         return new TargetApi(this.url, this.connector, this.key, _candidateId).getRecords()
             .then(_result => {
+                CandidateVacancies._validateApiResults(_result);
+
                 if (_result.data.type !== config.get('targetGroups.candidate')) {
-                    throw new Error('Sorry, this candidate doesn\'t exist in our system');
+                    throw new Error('This candidate doesn\'t exist in our system.');
                 }
 
                 _response.candidate.firstName = _result.data.field_firstname;
@@ -39,6 +41,8 @@ class CandidateVacancies {
                 return this.candidateVacanciesApi.getRecords(NUM_OF_TARGETS_TO_FETCH);
             })
             .then(_results => {
+                CandidateVacancies._validateApiResults(_results);
+
                 const _vacanciesToFetchMap = {};
 
                 _results.data.objects.forEach(_candidateVacancy => {
@@ -73,6 +77,8 @@ class CandidateVacancies {
                 }, { concurrency: 2 });
             })
             .then(_results => {
+                _results.forEach(CandidateVacancies._validateApiResults);
+
                 const _vacancies = {};
 
                 _results.forEach(_result => {
@@ -90,6 +96,12 @@ class CandidateVacancies {
 
                 return _response;
             });
+    }
+
+    static _validateApiResults (_results) {
+        if (!_results || _results.status !== 200) {
+            throw new Error('We couldn\'t get the data for you, please try again later.');
+        }
     }
 }
 

@@ -1,7 +1,9 @@
 'use strict';
 
 const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: path.join(__dirname, '/src/static', 'index.js'),
@@ -10,12 +12,12 @@ module.exports = {
         filename: 'bundle.min.js'
     },
     module: {
-        rules: [{
+        rules: [/*{
             test: /\.(png|jpg|svg)$/,
             use: {
                 loader: 'file-loader'
             }
-        }, {
+        }, */{
             test: /\.js$/,
             exclude: /node_modules/,
             use: {
@@ -49,11 +51,15 @@ module.exports = {
         }]
     },
     plugins: [
+        new CleanWebpackPlugin('./public'),
         new UglifyJsPlugin({
             cache: true,
             parallel: true,
             test: /\.js($|\?)/i,
             extractComments: true
-        })
+        }),
+        new CopyWebpackPlugin([{
+            from: './src/static/images'
+        }], {})
     ]
 };

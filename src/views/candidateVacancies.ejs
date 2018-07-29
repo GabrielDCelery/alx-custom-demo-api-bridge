@@ -7,41 +7,81 @@
 </head>
 
 <body>
-    <div id="header">
-    </div>
-    <div id="page">
-        <div class="w-75 mx-auto">
-            <div id="pageheader" class="p-3">
-                <h2 class="text-white font-weight-bold">Welcome <%= payload.candidate.firstName %> <%= payload.candidate.lastName %>!</h2>
-            </div>
-            <div id="pagecontent">
-                <div class="jumbotron">
-                    <p class="lead">Below is a list of vacancies you have applied for. The status will show your progress.</p>
-                    <p class="lead">Please contact us on 0800 123 4567 if you need further information.</p>
+    <div id="header" class="alx-vh-12">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-4 alx-vh-12 d-flex justify-content-center align-items-center">
+                    <img src="/public/pertemps_logo.png" alt="Pertemps logo" width="300" height="80">
                 </div>
-                <table class="table table-striped w-75 mx-auto">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Job Title</th>
-                            <th scope="col">Branch Name</th>
-                            <th scope="col">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% payload.applications.forEach((_row, _index) => { %>
-                            <tr>
-                                <th scope="row"><%= _index + 1 %></th>
-                                <td><%= _row[1] %></td>
-                                <td><%= _row[2] %></td>
-                                <td><%= _row[3] %></td>
-                            </tr>
-                        <% }); %>
-                    </tbody>
-                </table>
+                <div class="col-sm-8"></div>
             </div>
         </div>
     </div>
+    <div id="page" class="alx-vh-min-76 py-5">
+        <div class="w-75 mx-auto">
+            <% if(success === true) { %>
+                <div id="pageheader" class="p-3">
+                    <h2 class="text-white font-weight-bold">Welcome <%= payload.candidate.firstName || '' %> <%= payload.candidate.lastName || '' %>!</h2>
+                </div>
+                <div id="pagecontent">
+                    <div class="jumbotron">
+                        <p class="lead">Below is a list of vacancies you have applied for. The status will show your progress.</p>
+                        <p class="lead">Please contact us on 0800 123 4567 if you need further information.</p>
+                    </div>
+                    <div class="w-75 mx-auto py-3">
+                    <% if (!Array.isArray(payload.applications) || payload.applications.length === 0) { %>
+                        <div class="alert alert-info" role="alert">
+                            <strong>You don't have any applications in our system.
+                        </div>
+                    <% } else { %>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Job Title</th>
+                                    <th scope="col">Branch Name</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% payload.applications.forEach((_row, _index) => { %>
+                                    <tr>
+                                        <th scope="row"><%= _index + 1 %></th>
+                                        <td><%= _row[1] %></td>
+                                        <td><%= _row[2] %></td>
+                                        <td><%= _row[3] %></td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    <% } %>
+                    </div>
+                </div>
+            <% } else { %>
+                <div id="pageheader" class="p-3">
+                    <h2 class="text-white font-weight-bold">Sorry, something unexpected happened...</h2>
+                </div>
+                <div id="pagecontent">
+                    <div class="w-75 mx-auto py-3">
+                        <div class="alert alert-danger" role="alert">
+                            <%= payload %>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+    <div id="footer" class="alx-vh-12">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8"></div>
+                <div class="col-sm-4 alx-vh-12 d-flex justify-content-center align-items-center">
+                    <p>© nowwecomply LTD, 2011 All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>

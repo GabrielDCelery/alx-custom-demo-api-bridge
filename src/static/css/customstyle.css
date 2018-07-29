@@ -1,0 +1,25 @@
+html, body {
+    height: 100%;
+}
+
+.alx-vh-min-76 { 
+    min-height: 76vh;
+}
+
+.alx-vh-12 {
+    height: 12vh;
+}
+
+#page {
+    background-color: #001A71;
+    border-top: 9px solid #D3D3D3;
+    border-bottom: 9px solid #D3D3D3;
+}
+
+#pageheader {
+    background-color: #333;
+}
+
+#pagecontent {
+    background-color: #fff;
+}

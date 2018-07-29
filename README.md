@@ -3,7 +3,7 @@
 Installation for production
 
 ```
-docker build -t alx/api-demo-pertemps
+docker build -t alx/api-demo-pertemps .
 docker run -d alx/api-demo-pertemps
 ```
 

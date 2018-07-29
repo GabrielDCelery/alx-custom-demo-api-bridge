@@ -7,7 +7,7 @@ docker build -t alx/api-demo-pertemps
 docker run -d alx/api-demo-pertemps
 ```
 
-By default the app is running on PORT 8080, if you want to change that modify the Docker file and the ./config/host.js file.
+By default the app is running on PORT 8080, if you want to change that modify the ./Dockerfile and the ./config/host.js file.
 
 Installation for local testing
 ```

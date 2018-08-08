@@ -21,3 +21,32 @@ npm run start
 ```
 
 Go to http://localhost:8080/candidate/:candidateId
+
+### auth0 API example
+
+API endpoint (POST)
+
+http://localhost:8080/auth0
+
+Example request body sent to the endpoint
+
+```
+{ 
+    "method": "POST",
+	"url": "https://123d.eu.auth0.com/api/v2/users",
+	"auth": {
+		"client_id": "super secret id",
+		"client_secret": "super secret password"
+	},
+    "body": {
+        "connection": "",
+        "email": "",
+        "username": "",
+        "password": "",
+        "phone_number": "",
+        "user_metadata": {},
+        "email_verified": true,
+        "app_metadata": {}
+    }
+}
+```

@@ -5,8 +5,9 @@ const config = require('config');
 const TargetApi = require('./api/TargetApi');
 const TargetsApi = require('./api/TargetsApi');
 const Promise = require('bluebird');
+const moment = require('moment');
 
-const NUM_OF_TARGETS_TO_FETCH = 100;
+const NUM_OF_TARGETS_TO_FETCH = 1000;
 
 class CandidateVacancies {
     constructor() {
@@ -90,7 +91,8 @@ class CandidateVacancies {
                         _k,
                         _vacancies[_v.vacancyId].field_job_title || '',
                         _vacancies[_v.vacancyId].field_branch_name || '',
-                        _v.details.field_candidate_vacancy_status || ''
+                        _v.details.field_candidate_vacancy_status || '',
+                        CandidateVacancies._convertDateToUkLocale(_v.details.created_at)
                     ]);
                 });
 
@@ -102,6 +104,14 @@ class CandidateVacancies {
         if (!_results || _results.status !== 200) {
             throw new Error('We couldn\'t get the data for you, please try again later.');
         }
+    }
+
+    static _convertDateToUkLocale (_dateValue) {
+        if (_.isNil(_dateValue) || _dateValue === '') {
+            return '';
+        }
+
+        return moment(new Date(_dateValue)).format('DD/MM/YYYY');
     }
 }
 

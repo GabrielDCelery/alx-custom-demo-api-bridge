@@ -7,6 +7,10 @@ const CandidateVacancies = require('../scripts/CandidateVacancies');
 
 const cv = new CandidateVacancies();
 
+router.get('/', function (_req, _res) {
+    return _res.send('Please provide a candidate id in the URL!');
+});
+
 router.get('/:candidateId', function (_req, _res) {
     cv.getVacancies(parseInt(_req.params.candidateId))
         .then(_results => {

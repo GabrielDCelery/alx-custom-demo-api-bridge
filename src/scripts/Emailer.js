@@ -20,8 +20,8 @@ const DEFAULT_EMAIL_CONFIG = {
     }
 }
 
-class PdfEmailer {
-    sendPdf (_emailConfig) {
+class Emailer {
+    sendPdf (_emailConfig, _pdfPath) {
         const _config = _.defaultsDeep({}, _emailConfig, DEFAULT_EMAIL_CONFIG);
 
         return new Promise((_accept, _reject) => {
@@ -41,7 +41,7 @@ class PdfEmailer {
                 html: _config.recipient.html,
                 attachments: [{
                     filename: _config.recipient.fileName,
-                    path: path.join(__dirname, '../files/test.pdf'),
+                    path: _pdfPath,
                     contentType: 'application/pdf'
                 }]
             };
@@ -57,4 +57,4 @@ class PdfEmailer {
     }
 }
 
-module.exports = PdfEmailer;
+module.exports = Emailer;

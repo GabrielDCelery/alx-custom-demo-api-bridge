@@ -47,6 +47,7 @@
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
     "nodemailer": "^4.6.7",
+    "pdfkit": "^0.8.3",
     "request": "^2.87.0",
     "url-join": "^4.0.0"
   }

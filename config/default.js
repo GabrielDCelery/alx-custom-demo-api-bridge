@@ -5,5 +5,6 @@ module.exports = {
     api: require('./api'),
     auth: require('./auth'),
     targetGroups: require('./targetGroups'),
-    auth0: require('./auth0')
+    auth0: require('./auth0'),
+    files: require('./files')
 };

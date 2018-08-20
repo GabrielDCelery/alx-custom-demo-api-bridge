@@ -49,7 +49,6 @@ router.get('/:candidateId', (_req, _res) => {
             ]);
         })
         .then(_results => {
-            console.log(_results)
             const [_candidate, _applications] = _results;
 
             _payload.candidate = _candidate;

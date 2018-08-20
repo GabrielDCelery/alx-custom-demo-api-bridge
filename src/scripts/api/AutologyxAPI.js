@@ -81,7 +81,7 @@ class AutologyxAPI extends _API {
             connector: this.connector,
             api_key: this.apiKey,
             field_candidate_email: _candidateEmail,
-            field_vacancy_target_id: _vacancyId
+            field_vacancy_pertemps_id: _vacancyId
         };
 
         return this._sendRequestToNewApi('candidateVacancy', 'get', _query)
@@ -93,7 +93,7 @@ class AutologyxAPI extends _API {
                 return this.recordNormalizer.normalizeCandidateVacancy(
                     _record.id,
                     _record.field_candidate_email, 
-                    _record.field_vacancy_target_id, 
+                    _record.field_vacancy_pertemps_id, 
                     _record.field_candidate_vacancy_status,
                     _record.created_at
                 );
@@ -117,7 +117,7 @@ class AutologyxAPI extends _API {
                     return this.recordNormalizer.normalizeCandidateVacancy(
                         _record.id,
                         _record.field_candidate_email, 
-                        _record.field_vacancy_target_id, 
+                        _record.field_vacancy_pertemps_id, 
                         _record.field_candidate_vacancy_status,
                         _record.created_at
                     );
@@ -129,7 +129,7 @@ class AutologyxAPI extends _API {
         const _query = {
             connector: this.connector,
             api_key: this.apiKey,
-            field_vacancy_target_id: _vacancyId
+            field_vacancy_pertemps_id: _vacancyId
         };
 
         return this._sendRequestToNewApi('candidateVacancy', 'get', _query)
@@ -142,7 +142,7 @@ class AutologyxAPI extends _API {
                     return this.recordNormalizer.normalizeCandidateVacancy(
                         _record.id,
                         _record.field_candidate_email, 
-                        _record.field_vacancy_target_id, 
+                        _record.field_vacancy_pertemps_id, 
                         _record.field_candidate_vacancy_status,
                         _record.created_at
                     );
@@ -172,7 +172,7 @@ class AutologyxAPI extends _API {
             connector: this.connector,
             api_key: this.apiKey,
             field_candidate_email: _candidateEmail,
-            field_vacancy_target_id: _vacancyId
+            field_vacancy_pertemps_id: _vacancyId
         };
 
         return this._sendRequestToNewApi('candidateVacancy', 'patch', _query, _data);

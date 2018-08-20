@@ -48,10 +48,10 @@
                                 <% payload.applications.forEach((_row, _index) => { %>
                                     <tr>
                                         <th scope="row"><%= _index + 1 %></th>
-                                        <td><%= _row[1] %></td>
-                                        <td><%= _row[2] %></td>
-                                        <td><%= _row[3] %></td>
-                                        <td><%= _row[4] %></td>
+                                        <td><%= _row.jobTitle %></td>
+                                        <td><%= _row.branchName %></td>
+                                        <td><%= _row.status %></td>
+                                        <td><%= _row.createdAt %></td>
                                     </tr>
                                 <% }); %>
                             </tbody>

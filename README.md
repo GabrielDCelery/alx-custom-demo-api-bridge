@@ -50,3 +50,39 @@ Example request body sent to the endpoint
     }
 }
 ```
+
+### Website Data Miner endpoint
+
+API endpoint (POST)
+
+http://localhost:8080/websitedataminer/mine
+
+```
+{
+	"url": "https://www.bankgirot.se/en/sok-bg-nr/?bgnr=5953-5849",
+	"selectorMap": {
+		"companyName": ".result-container .large-12 .title",
+		"address1": ".result-container .large-3:nth-child(2) li:nth-child(2)",
+		"address2": ".result-container .large-3:nth-child(2) li:nth-child(3)",
+		"address3": ".result-container .large-3:nth-child(2) li:nth-child(4)",
+		"companyNumber": ".result-container .large-3:nth-child(3) li:nth-child(2)",
+		"bankGiroNumber": ".result-container .large-3:nth-child(4) li:nth-child(2)"
+	}
+}
+```
+
+Example result
+
+```
+{
+    "success": true,
+    "payload": {
+        "companyName": "ASTONCARTER INTERNATIONAL LTD UK",
+        "address1": "FILIAL",
+        "address2": "GREV TUREGATAN 3",
+        "address3": "11446 STOCKHOLM",
+        "companyNumber": "5164040163",
+        "bankGiroNumber": "5953-5849"
+    }
+}
+```

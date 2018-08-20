@@ -16,6 +16,7 @@ app.use('/public', express.static(path.join(__dirname, '../public')));
 app.use('/', require('./routes/main'));
 app.use('/auth0', require('./routes/auth0'));
 app.use('/email', require('./routes/email'));
+app.use('/websitedataminer', require('./routes/websiteDataMiner'));
 app.use('/candidate', require('./routes/candidate'));
 
 app.listen(config.get('host.port'), config.get('host.host'));

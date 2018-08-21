@@ -1,12 +1,12 @@
 'use strict';
 
+const alxApiConfig = require('config').get('alxAPI');
 const express = require('express');
 const router = express.Router();
 
 const PayloadValidator = require('../scripts/utils/PayloadValidator');
 const Candidates = require('../scripts/controllers/Candidates');
 const CandidateVacancies = require('../scripts/controllers/CandidateVacancies');
-//const VacancyStatusChange = require('../scripts/controllers/VacancyStatusChange');
 const ExternalAdaptDataSynchronizer = require('../scripts/controllers/ExternalAdaptDataSynchronizer');
 
 router.get('/', function (_req, _res) {
@@ -14,18 +14,14 @@ router.get('/', function (_req, _res) {
 });
 
 router.get('/:candidateId', (_req, _res) => {
-    const candidates = new Candidates({
-        alxConnector: 'pcj_test_api',
-        alxApiKey: 'a35c447294f010bb41ccc3e43eab6c72107b43de'
-    });
-    const candidateVacancies = new CandidateVacancies({
-        alxConnector: 'pcj_test_api',
-        alxApiKey: 'a35c447294f010bb41ccc3e43eab6c72107b43de'
-    });
-    const externalAdaptDataSynchronizer = new ExternalAdaptDataSynchronizer({
-        alxConnector: 'pcj_test_api',
-        alxApiKey: 'a35c447294f010bb41ccc3e43eab6c72107b43de'
-    });
+    const _alxConnectorConfig = {
+        alxConnector: alxApiConfig.connector,
+        alxApiKey: alxApiConfig.key
+    };
+
+    const candidates = new Candidates(_alxConnectorConfig);
+    const candidateVacancies = new CandidateVacancies(_alxConnectorConfig);
+    const externalAdaptDataSynchronizer = new ExternalAdaptDataSynchronizer(_alxConnectorConfig);
 
     const _payload = {
         candidate: {
@@ -71,9 +67,7 @@ router.post('/syncCandidateVacancy', (_req, _res) => {
     try {
         new PayloadValidator(_req.body).checkProperties([
             'candidate_email',
-            'vacancy_id',
-            'connector',
-            'api_key'
+            'vacancy_id'
         ]);
     } catch (_error) {
         return _res.json({ 
@@ -83,8 +77,8 @@ router.post('/syncCandidateVacancy', (_req, _res) => {
     }
 
     const candidateVacancies = new CandidateVacancies({
-        alxConnector: _req.body.connector,
-        alxApiKey: _req.body.api_key
+        alxConnector: alxApiConfig.connector,
+        alxApiKey: alxApiConfig.key
     });
 
     candidateVacancies.syncCandidateVacancy(_req.body.candidate_email, _req.body.vacancy_id)

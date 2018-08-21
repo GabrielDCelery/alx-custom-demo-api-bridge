@@ -60,7 +60,6 @@ router.get('/:candidateId', (_req, _res) => {
             });
         })
         .catch(_error => {
-            console.log(_error)
             return _res.render('candidateVacancies', {
                 success: false,
                 payload: _error.message

@@ -178,11 +178,11 @@ class AutologyxAPI extends _API {
         return this._sendRequestToNewApi('candidateVacancy', 'patch', _query, _data);
     }
 
-    _sendRequestToNewApi (_targetGroup, _method, _query, _data) {
+    _sendRequestToNewApi (_targetGroup, _method, _query = {}, _data) {
         const _axiosConfig = { method: _method };
         const _group = Number.isInteger(_targetGroup) ? _.toString(_targetGroup) : _.toString(this.globalConfig.get(`targetGroups.${_targetGroup}`));
 
-        _axiosConfig.url = this.urlJoin(URL_API_NEW, _group, `?${this.querystring.stringify(_query)}`);
+        _axiosConfig.url = `${URL_API_NEW}/${_group}/?${this.querystring.stringify(_query)}`;
 
         if (_data) {
             _axiosConfig.data = _data;

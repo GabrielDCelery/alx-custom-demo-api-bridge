@@ -15,7 +15,7 @@ const CANDIDATE_VACANCY_STATUSES = {
     jobFilled: 'Job Filled'
 };
 
-const CANDIDATE_VACANCY_STATUSES_METHODS = {
+const CANDIDATE_VACANCY_STATUSES_SYNC_METHODS = {
     'Placed': '_syncPlacedCandidateVacancy'
 };
 
@@ -73,7 +73,7 @@ class CandidateVacancies {
                         return Promise.resolve(true);
                     }
 
-                    return this.autologyxAPI.setCandidateVacancyStatus(_cv.candidateEmail, _cv.vacancyId, 'Unsuccessful'/*CANDIDATE_VACANCY_STATUSES.jobFilled*/);
+                    return this.autologyxAPI.setCandidateVacancyStatus(_cv.candidateEmail, _cv.vacancyId, CANDIDATE_VACANCY_STATUSES.jobFilled);
                 }, { concurrency: 2 });
             });
     }
@@ -81,7 +81,7 @@ class CandidateVacancies {
     syncCandidateVacancy (_candidateEmail, _vacancyId) {
         return this.autologyxAPI.getCandidateVacancy(_candidateEmail, _vacancyId)
             .then(_candidateVacancy => {
-                const _methodToCall = CANDIDATE_VACANCY_STATUSES_METHODS[_candidateVacancy.status];
+                const _methodToCall = CANDIDATE_VACANCY_STATUSES_SYNC_METHODS[_candidateVacancy.status];
 
                 if (this[_methodToCall]) {
                     return this[_methodToCall](_candidateEmail, _vacancyId);
